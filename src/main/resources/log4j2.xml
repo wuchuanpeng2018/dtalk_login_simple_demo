@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="info">
+	<Appenders>
+		<!-- 控制台输出 -->
+		<Console name="Console" target="SYSTEM_OUT">
+			<ThresholdFilter level="trace" onMatch="ACCEPT" onMismatch="DENY" />
+			<PatternLayout pattern="%-d{yyyy-MM-dd HH:mm:ss}\t%level\t[%-75.75l{1.}] - %m%n" />
+		</Console>
+
+		<!-- 通用日志 -->
+		<RollingFile name="basic" fileName="d/app/ding/log.log" filePattern="d/app/ding/log.%d{yyyy-MM-dd-HH}.log.gz">
+			<ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY" />
+			<PatternLayout pattern="%-d{yyyy-MM-dd HH:mm:ss}\t%level\t[%-75.75l{1.}] - %m%n" />
+			<Policies>
+				<TimeBasedTriggeringPolicy modulate="true" interval="1" />
+				<SizeBasedTriggeringPolicy size="500M" />
+			</Policies>
+		</RollingFile>
+
+	</Appenders>
+	<Loggers>
+		<!-- 通用/默认配置 -->
+		<Root level="info">
+			<AppenderRef ref="Console" />
+			<appender-ref ref="basic" />
+		</Root>
+	</Loggers>
+</Configuration>

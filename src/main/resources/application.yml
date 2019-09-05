@@ -1,0 +1,29 @@
+#服务端口
+server:
+  port: 8181
+###################  spring config  ###################
+#spring:
+##模板技术
+#  thymeleaf:
+#    mode: HTML
+#    cache: false
+#    prefix: classpath:/templates/
+#    suffix: .html
+#    encoding: utf-8
+#    servlet:
+#      content-type: text/html
+#  mvc:
+#      view:
+#        prefix: /templates
+
+spring:
+  mvc:
+    view:
+      prefix: /
+      suffix: .html
+
+logging:
+  level:
+    ROOT: info
+    cn:
+      jlhd: info
